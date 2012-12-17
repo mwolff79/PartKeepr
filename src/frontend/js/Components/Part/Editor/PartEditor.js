@@ -317,7 +317,7 @@ Ext.define('PartKeepr.PartEditor', {
 		 * that the record is invalid and being removed.
 		 */
 
-		for (j=0;j<this.record.parameters().getCount();j++) {
+		/*for (j=0;j<this.record.parameters().getCount();j++) {
 			if (this.record.parameters().getAt(j).get("unit_id") === 0) {
 				removeRecords.push(this.record.parameters().getAt(j));
 			}
@@ -327,7 +327,7 @@ Ext.define('PartKeepr.PartEditor', {
 			this.record.parameters().remove(removeRecords);
 		}
 		
-		removeRecords = [];
+		removeRecords = [];*/
 		
 		/**
 		 * Iterate through all records and check if a valid manufacturer

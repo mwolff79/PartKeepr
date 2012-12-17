@@ -226,6 +226,13 @@ class PartService extends Service implements RestfulService {
 		return array("data" => $query->getArrayResult());
 	}
 	
+	public function getPartTextValueNames () {
+		$dql = "SELECT pp.txtValue FROM PartKeepr\PartParameter\PartParameter pp GROUP BY pp.txtValue";
+		$query = PartKeepr::getEM()->createQuery($dql);
+
+		return array("data" => $query->getArrayResult());
+	}	
+	
 	public function movePart () {
 		$this->requireParameter("targetCategory");
 		

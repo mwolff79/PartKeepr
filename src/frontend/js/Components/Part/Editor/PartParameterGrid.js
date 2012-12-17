@@ -74,7 +74,8 @@ Ext.define('PartKeepr.PartParameterGrid', {
 		                	},
 		                	editor: {
 		                		xtype: 'SiUnitField',
-		                		decimalPrecision: 20
+		                		decimalPrecision: 20,
+						allowBlank: true
 		                	}
 		                },
 		                {
@@ -96,6 +97,18 @@ Ext.define('PartKeepr.PartParameterGrid', {
 		                        allowBlank:true
 		                    }
 		                },
+				{
+					header: i18n("Text"),
+					flex: 0.2,
+					dataIndex: 'txtValue',
+					editor: {
+						xtype: 'PartTextValueComboBox',
+						allowBlank: true,
+						lazyRender: true,
+						listClass: 'x-combo-list-small',
+						selectOnTab: true
+					}
+				},				
 		                { 	
 		                	header: i18n("Description"),
 		                	dataIndex: 'description',

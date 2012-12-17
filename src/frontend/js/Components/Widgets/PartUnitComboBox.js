@@ -3,10 +3,11 @@ Ext.define("PartKeepr.PartUnitComboBox",{
     alias: 'widget.PartUnitComboBox',
     displayField: 'name',
     valueField: 'id',
-    autoSelect: true,
+    autoSelect: false,
+    allowBlank: true,
     queryMode: 'local',
     triggerAction: 'all',
-    forceSelection: true,
+    forceSelection: false,
     editable: true,
     initComponent: function () {
 		this.store = PartKeepr.getApplication().getPartUnitStore();

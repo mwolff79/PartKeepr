@@ -56,7 +56,7 @@ class PartParameter {
 	 *
 	 * Example: If you have 10µ, the value field will contain "10", the prefix object is linked to the SiPrefix
 	 * representing "µ" and the rawValue field will contain 0.000001
-	 * @Column(type="float")
+	 * @Column(type="float",nullable=true)
 	 * @var float
 	 */
 	private $value;
@@ -70,11 +70,18 @@ class PartParameter {
 
 	/**
 	 * The raw value of the unit.
-	 * @Column(type="float")
+	 * @Column(type="float",nullable=true)
 	 * @var float
 	 */
 	private $rawValue;
 
+	/**
+	 * The Text Value of the parameter
+	 * @Column(type="string",nullable=true)
+	 * @var string
+	 */	 
+	private $txtValue;
+	
 	/**
 	 * Sets the name for this parameter
 	 * @param string $name The name
@@ -156,6 +163,22 @@ class PartParameter {
 	public function getValue () {
 		return $this->value;
 	}
+	
+	/**
+	 * Sets the txtValue for this parameter
+	 * @param string $txtValue The description
+	 */
+	public function setTextValue ($txtValue) {
+		$this->txtValue = $txtValue;
+	}
+
+	/**
+	 * Returns the txtValue
+	 * @return string The txtValue
+	 */
+	public function getTextValue () {
+		return $this->txtValue;
+	}	
 
 	/**
 	 * Sets the si prefix for this parameter
@@ -204,6 +227,7 @@ class PartParameter {
 			"name" => $this->getName(),
 			"description" => $this->getDescription(),
 			"value" => $this->getValue(),
+			"txtValue" => $this->getTextValue(),			
 			"part_id" => $this->getPart()->getId(),
 			"siprefix_id" => is_object($this->getSiPrefix()) ? $this->getSiPrefix()->getId() : null,
 			"prefixedValue" => array(
@@ -233,13 +257,20 @@ class PartParameter {
 				case "value":
 					$this->setValue($value);
 					break;
+				case "txtValue":
+					$this->setTextValue($value);
+					break;					
 				case "siprefix_id":
 					$prefix = SiPrefix::loadById($value);
 					$this->setSiPrefix($prefix);
 					break;
 				case "unit_id":
-					$unit = Unit::loadById($value);
-					$this->setUnit($unit);
+					if (($value == 0) || ($value == null)) {
+						$this->setUnit(null);					
+					} else {
+						$unit = Unit::loadById($value);
+						$this->setUnit($unit);
+					}
 					break;
 			}
 		}

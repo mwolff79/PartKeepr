@@ -5,6 +5,7 @@ Ext.define("PartKeepr.PartParameter", {
 	         {	name: 'part_id',			type: 'int' },
 	         {	name: 'name',			type: 'string' },
 	         {	name: 'description',			type: 'string' },
+		 { 	 name: 'txtValue',			type: 'string' },
 	         {	name: 'unit_id',			type: 'int' },
 	         {	name: 'siprefix_id',		type: 'int' },
 	         {  name: 'value', type: 'float' },

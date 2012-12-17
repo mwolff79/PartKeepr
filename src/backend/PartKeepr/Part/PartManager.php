@@ -288,6 +288,7 @@ class PartManager extends AbstractManager {
 						$partParameter->setName($record["name"]);
 						$partParameter->setDescription($record["description"]);
 						$partParameter->setValue($record["value"]);
+						$partParameter->setValue($record["txtValue"]);
 						$partParameter->setSiPrefix(SiPrefix::loadById($record["siprefix_id"]));
 						$partParameter->setUnit(Unit::loadById($record["unit_id"]));
 						break;
@@ -316,6 +317,7 @@ class PartManager extends AbstractManager {
 				$partParameter->setName($record["name"]);
 				$partParameter->setDescription($record["description"]);
 				$partParameter->setValue($record["value"]);
+				$partParameter->setValue($record["txtValue"]);
 				$partParameter->setSiPrefix(SiPrefix::loadById($record["siprefix_id"]));
 				$partParameter->setUnit(Unit::loadById($record["unit_id"]));
 				

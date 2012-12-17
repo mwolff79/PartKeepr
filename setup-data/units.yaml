@@ -1,3 +1,7 @@
+'':
+  symbol: ''
+  prefixes:
+    - ""
 Meter:
   symbol: m
   prefixes:
